@@ -5,6 +5,9 @@ import { NavigationContainer } from "@react-navigation/native";
 // Components
 import RootNavigator from "./Navigation";
 
+import store from "./store";
+import {Provider} from "react-redux";
+
 export default class App extends Component {
   state = {
     loading: true,
@@ -23,11 +26,13 @@ export default class App extends Component {
       return <Spinner color="#132D4B" />;
     }
     return (
+      <Provider store={store}>
       <NavigationContainer>
         <Container>
           <RootNavigator />
         </Container>
       </NavigationContainer>
+      </Provider>
     );
   }
 }
